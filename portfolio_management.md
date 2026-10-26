@@ -53,3 +53,31 @@ The amount of the short is calcuated by sum of $\text{NMV}\times \beta$, so that
 
 ## Chapter 4: Multi-Factor Models
 
+Naturally, we know that alphas in market cannot be measured from one straightfowrard regression. So an extension of the single-factor model would be into a *multi-factor model*:
+$$
+r = \alpha + \beta^1\times f_1 + ... + \beta^m\times f_m + \epsilon
+$$
+
+These betas are now *loadings* of a stock to a factor, so these are 'characteristics' of a stock. To reduce the factor to a more implementable version, we have a *two* factor model - a market-based one and a market-cap-based one:
+$$
+r = \alpha + \beta^M r^M + \beta^\text{BMS} r^\text{BMS} + \epsilon
+$$
+
+where M is the Market and BMS is 'Big Minus Small'.
+
+So over time, more factors have been discovered and used in government bonds and corporate credit. Factors and betas are found via broadly three ways:
+1. **Time-Series Approach**: Macroeconomic indicators, inflation, interest rates, economic growth, employment data, business cycle indicators, economic sentiment data (e.g. consumer confidence), Detailed economic activity data (same-store sales, purchasing manager indices, etc.). You can estimate the sensitivity of these factors via a **time-series regression** of the stock return.
+2. **Fundamental Approach**: Pioneered by Barr Rosenberg (Barra). Betas are primitive information/characteristics of each company.
+3. **Statistical Approach**: Derived from time series of asset returns. Beta and factor returns are estimated using asset returns alone.
+
+**Fundamental models** are used the most by fundamental managers, while **time series models** are neccessary for time series betas. However, **time-series-based models are more popular in academic literature than in real life**. Mostly because of interpretability and performance concerns.
+
+Statistical (time-series) models have the least data requirement - only the time-series data. They also have **comparable** performance for volatility prediction.
+
+FAQ:
+1. How can two models with diff. versions of factors (e.g. z-score vs raw) be different for specific factors?
+$\\ \quad$ A. **TLDR: Predictive power of regressiosn don't change if you mix and match vriables**. The $R^2$ of a regression is the same if your variables are squared/doubled etc. The regression coefficients will change, but $R^2$ stays the same.
+2. Unit of measure for loadings? Exposures? Portoflio Volatility?
+$\\ \quad$ - Loadings: dimentionless
+$\\ \quad$ - Loadings: dimentionless
+$\\ \quad$ - Loadings: dimentionless
