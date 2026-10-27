@@ -31,6 +31,7 @@ $$
 
 This is also called the **Capital Asset Pricing Model (CAPM)**.
 In theory, if the market return is zero, the daily stock return is the alpha component. But that would be discount the idiosyncratic return, or $\epsilon$. So technically, you can simplify it as 
+
 $$
 (expected\space return) = (alpha) + (beta) \times (expected\space market\space return)
 $$
@@ -43,6 +44,7 @@ In the quant industry:
 ### How do we calculate risk?
 
 The dollar variance/volatility of each stock is the sum of the market volatility and idiosyncratic volatility. 
+
 $$\sigma_{\text{stock}} = \text{NMV} \times \sqrt{\beta^2 \sigma_{\text{market}}^2 + \sigma_{\text{idio}}^2}$$
 
 This should a trivial calculation - you can do this in Excel or even use a Bloomberg function to do this (BETA \<GO>).
@@ -54,11 +56,13 @@ The amount of the short is calcuated by sum of $\text{NMV}\times \beta$, so that
 ## Chapter 4: Multi-Factor Models
 
 Naturally, we know that alphas in market cannot be measured from one straightfowrard regression. So an extension of the single-factor model would be into a *multi-factor model*:
+
 $$
 r = \alpha + \beta^1\times f_1 + ... + \beta^m\times f_m + \epsilon
 $$
 
 These betas are now *loadings* of a stock to a factor, so these are 'characteristics' of a stock. To reduce the factor to a more implementable version, we have a *two* factor model - a market-based one and a market-cap-based one:
+
 $$
 r = \alpha + \beta^M r^M + \beta^\text{BMS} r^\text{BMS} + \epsilon
 $$
@@ -76,8 +80,20 @@ Statistical (time-series) models have the least data requirement - only the time
 
 FAQ:
 1. How can two models with diff. versions of factors (e.g. z-score vs raw) be different for specific factors?
-$\\ \quad$ A. **TLDR: Predictive power of regressiosn don't change if you mix and match vriables**. The $R^2$ of a regression is the same if your variables are squared/doubled etc. The regression coefficients will change, but $R^2$ stays the same.
+  - **TLDR: Predictive power of regressiosn don't change if you mix and match vriables**. The $R^2$ of a regression is the same if your variables are squared/doubled etc. The regression coefficients will change, but $R^2$ stays the same.
+
 2. Unit of measure for loadings? Exposures? Portoflio Volatility?
-$\\ \quad$ - Loadings: dimentionless
-$\\ \quad$ - Loadings: dimentionless
-$\\ \quad$ - Loadings: dimentionless
+  - **Loadings**: dimentionless
+  - **Exposures**: Currency
+  - **Volatility**: Currency/Percentage
+
+3. Annualized volatility to weekly/daily?
+
+$$
+\sigma _\text{yearly}=\sqrt{52} \times \sigma _\text{weekly}
+$$
+
+$$
+\sigma _\text{yearly}=\sqrt{252} \times \sigma _\text{daily}
+$$
+
